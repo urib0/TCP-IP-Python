@@ -254,8 +254,8 @@ class dobot_api_feedback:
     def __del__(self):
         self.close()
 
-    def MovJ(self, j1, j2, j3, j4, j5, j6):
-        string = "MovJ({:f},{:f},{:f},{:f},{:f},{:f})".format(j1,j2,j3,j4,j5,j6)
+    def MovJ(self, x, y, z, a, b, c):
+        string = "MovJ({:f},{:f},{:f},{:f},{:f},{:f})".format(x,y,z,a,b,c)
         print(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
     
@@ -320,8 +320,8 @@ class dobot_api_feedback:
         print(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
-    def ServoP(self, j1, j2, j3, j4, j5, j6):
-        string = "ServoP({:f},{:f},{:f},{:f},{:f},{:f})".format(j1,j2,j3,j4,j5,j6)
+    def ServoP(self, x, y, z, a, b, c):
+        string = "ServoP({:f},{:f},{:f},{:f},{:f},{:f})".format(x,y,z,a,b,c)
         print(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
