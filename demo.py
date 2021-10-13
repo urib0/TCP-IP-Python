@@ -11,9 +11,9 @@ def main(client_dashboard, client_feedback):
     client_dashboard.User(0)
     client_dashboard.Tool(0)
     client_feedback.JointMovJ(0,50,0,0,0,0)
-    time.sleep(5)
+    client_dashboard.Sync()
     client_feedback.JointMovJ(0,30,0,0,0,0)
-    time.sleep(5)
+    client_dashboard.Sync()
     print('!!!!!!END!!!!!!')
 
 def data_feedback(client_feedback):

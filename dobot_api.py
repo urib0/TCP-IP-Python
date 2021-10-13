@@ -225,6 +225,12 @@ class dobot_api_dashboard:
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         self.WaitReply()
+    
+    def Sync(self):
+        string = "Sync()"
+        print(string)
+        self.socket_dashboard.send(str.encode(string,'utf-8'))
+        self.WaitReply()
 
     def WaitReply(self):
         data = self.socket_dashboard.recv(1024)
