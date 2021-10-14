@@ -25,8 +25,8 @@
 ## 5.控制器版本
 可以使用TCP/IP协议的控制器版本如下：  
 
-- MG400： 1.5.4.0
-- CR： 3.5.1.9
+- MG400： 1.5.4.0 及以上
+- CR： 3.5.1.9 及以上
 
 
 ---
@@ -60,5 +60,5 @@ Method 2: To detect and search the dynamic library, you need to open the entire 
 ## 5. Controller version
 The controller versions that can use the TCP/IP protocol are as follows:
 
-- MG400: 1.5.4.0
-- CR: 3.5.1.9
+- MG400: 1.5.4.0 and above
+- CR: 3.5.1.9 and above
