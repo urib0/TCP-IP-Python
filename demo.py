@@ -4,18 +4,23 @@ import numpy as np
 import time
 
 def main(client_dashboard, client_feedback):
+    # Remove alarm
     client_dashboard.ClearError()
     time.sleep(0.5)
+    # Description The upper function was enabled successfully
     client_dashboard.EnableRobot()
     time.sleep(0.5)
+    # Select user and Tool coordinate system 0
     client_dashboard.User(0)
     client_dashboard.Tool(0)
+    # Call the JointMovJ directive
     client_feedback.JointMovJ(0,50,0,0,0,0)
     time.sleep(5)
     client_feedback.JointMovJ(0,30,0,0,0,0)
     time.sleep(5)
     print('!!!!!!END!!!!!!')
 
+# The feedback information about port 30003 is displayed
 def data_feedback(client_feedback):
     while True:
         time.sleep(0.05)
@@ -27,6 +32,7 @@ def data_feedback(client_feedback):
             print('tool_vector_actual', np.around(a['tool_vector_actual'], decimals=4))
             print('q_actual', np.around(a['q_actual'], decimals=4))
 
+# Enable threads on ports 29999 and 30003
 if __name__ == '__main__':
     client_dashboard = dobot_api_dashboard('192.168.5.1', 29999)
     client_feedback = dobot_api_feedback('192.168.5.1', 30003)
