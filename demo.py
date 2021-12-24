@@ -23,15 +23,16 @@ def main(client_dashboard, client_feedback):
 # The feedback information about port 30003 is displayed
 def data_feedback(client_feedback):
     hasRead = 0
-    while True:
-        temp = bytes()        
-        while hasRead < 1440:  
+    while True: 
+        data = bytes()
+        while hasRead < 1440:
             temp = client_feedback.socket_feedback.recv(1440-hasRead)
-            if len(temp)>0:
+            if len(temp) > 0:
                 hasRead += len(temp)
+                data += temp
         hasRead = 0
 
-        a = np.frombuffer(temp, dtype=MyType)
+        a = np.frombuffer(data, dtype=MyType)
         if hex((a['test_value'][0])) == '0x123456789abcdef':
             print('robot_mode', a['robot_mode'])
             print('tool_vector_actual', np.around(a['tool_vector_actual'], decimals=4))
