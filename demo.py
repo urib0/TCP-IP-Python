@@ -17,11 +17,16 @@ def main(client_dashboard, client_feedback):
     print('!!!!!!END!!!!!!')
 
 def data_feedback(client_feedback):
+    hasRead = 0
     while True:
-        time.sleep(0.05)
-        all = client_feedback.socket_feedback.recv(10240)
-        data = all[0:1440]
-        a = np.frombuffer(data, dtype=MyType)
+        temp = bytes()        
+        while hasRead < 1440:  
+            temp = client_feedback.socket_feedback.recv(1440-hasRead)
+            if len(temp)>0:
+                hasRead += len(temp)
+        hasRead = 0
+
+        a = np.frombuffer(temp, dtype=MyType)
         if hex((a['test_value'][0])) == '0x123456789abcdef':
             print('robot_mode', a['robot_mode'])
             print('tool_vector_actual', np.around(a['tool_vector_actual'], decimals=4))
