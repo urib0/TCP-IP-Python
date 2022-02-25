@@ -1,6 +1,16 @@
 import socket
 from threading import Timer
 import numpy as np
+import logging
+
+DEBUG_ON=True
+
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
+if not DEBUG_ON:
+    logging.disable(logging.CRITICAL)
+else:
+    print("debug on")
+
 
 # Port Feedback
 MyType=np.dtype([('len', np.int64, ), ('digital_input_bits', np.int64, ), 
@@ -62,7 +72,7 @@ class dobot_api_dashboard:
         Enable the robot
         """
         string = "EnableRobot()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -72,7 +82,7 @@ class dobot_api_dashboard:
         Disabled the robot
         """
         string = "DisableRobot()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -82,7 +92,7 @@ class dobot_api_dashboard:
         Clear controller alarm information
         """
         string = "ClearError()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -92,7 +102,7 @@ class dobot_api_dashboard:
         Robot stop
         """
         string = "ResetRobot()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -103,7 +113,7 @@ class dobot_api_dashboard:
         speed:Rate value(Value range:1~100)
         """
         string = "SpeedFactor({:d})".format(speed)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8')) 
         res=self.WaitReply()
         return res
@@ -114,7 +124,7 @@ class dobot_api_dashboard:
         index : Calibrated index of user coordinates
         """
         string = "User({:d})".format(index)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -125,7 +135,7 @@ class dobot_api_dashboard:
         index : Calibrated index of tool coordinates
         """
         string = "Tool({:d})".format(index)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -135,7 +145,7 @@ class dobot_api_dashboard:
         View the robot status
         """
         string = "RobotMode()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res = self.WaitReply()
         return ModeType[int(res)]
@@ -147,7 +157,7 @@ class dobot_api_dashboard:
         inertia: The load moment of inertia
         """
         string = "PayLoad({:f},{:f})".format(weight,inertia)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -159,7 +169,7 @@ class dobot_api_dashboard:
         status : Status of digital signal output port(0:Low level，1:High level
         """
         string = "DO({:d},{:d})".format(index,status)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -171,7 +181,7 @@ class dobot_api_dashboard:
         status : Status of digital signal output port(0:Low level，1:High level)
         """
         string = "DOExecute({:d},{:d})".format(index,status)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -183,7 +193,7 @@ class dobot_api_dashboard:
         status : Status of digital signal output port(0:Low level，1:High level)
         """
         string = "ToolDO({:d},{:d})".format(index,status)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -195,7 +205,7 @@ class dobot_api_dashboard:
         status : Status of digital signal output port(0:Low level，1:High level)
         """
         string = "ToolDOExecute({:d},{:d})".format(index,status)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -207,7 +217,7 @@ class dobot_api_dashboard:
         val : Voltage value (0~10)
         """
         string = "AO({:d},{:f})".format(index,val)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -219,7 +229,7 @@ class dobot_api_dashboard:
         val : Voltage value (0~10)
         """
         string = "AOExecute({:d},{:f})".format(index,val)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -230,7 +240,7 @@ class dobot_api_dashboard:
         speed : Joint acceleration ratio (Value range:1~100)
         """
         string = "AccJ({:d})".format(speed)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -241,7 +251,7 @@ class dobot_api_dashboard:
         speed : Cartesian acceleration ratio (Value range:1~100)
         """
         string = "AccL({:d})".format(speed)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -252,7 +262,7 @@ class dobot_api_dashboard:
         speed : Joint velocity ratio (Value range:1~100)
         """
         string = "SpeedJ({:d})".format(speed)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -263,7 +273,7 @@ class dobot_api_dashboard:
         speed : Cartesian acceleration ratio (Value range:1~100)
         """
         string = "SpeedL({:d})".format(speed)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -274,7 +284,7 @@ class dobot_api_dashboard:
         index : Parameter index (Value range:0~9)
         """
         string = "Arch({:d})".format(index)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -285,7 +295,7 @@ class dobot_api_dashboard:
         ratio : Smooth transition ratio (Value range:1~100)
         """
         string = "CP({:d})".format(ratio)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -296,7 +306,7 @@ class dobot_api_dashboard:
         value : Maximum lifting height (Highly restricted:Do not exceed the limit position of the z-axis of the manipulator)
         """
         string = "LimZ({:d})".format(value)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -312,7 +322,7 @@ class dobot_api_dashboard:
             1, 2... : axis 6 Angle is [0,90] is 1; [90180] 2; And so on)
         """
         string = "SetArmOrientation({:d},{:d},{:d},{:d})".format(r,d,n,cfg)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -323,7 +333,7 @@ class dobot_api_dashboard:
         Note: It takes about 10 seconds for the robot to be enabled after it is powered on.
         """
         string = "PowerOn()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -334,7 +344,7 @@ class dobot_api_dashboard:
         project_name ：Script file name
         """
         string = "RunScript({:s})".format(project_name)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -344,7 +354,7 @@ class dobot_api_dashboard:
         Stop scripts
         """
         string = "StopScript()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -354,7 +364,7 @@ class dobot_api_dashboard:
         Pause the script
         """
         string = "PauseScript()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -364,7 +374,7 @@ class dobot_api_dashboard:
         Continue running the script
         """
         string = "ContinueScript()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -384,7 +394,7 @@ class dobot_api_dashboard:
             "F64" : reads 64-bit double precision floating point number (8 bytes, occupying 4 registers)
         """
         string = "GetHoldRegs({:d},{:d},{:d},{:s})".format(id,addr,count,type)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -404,7 +414,7 @@ class dobot_api_dashboard:
             "F64" : reads 64-bit double precision floating point number (8 bytes, occupying 4 registers)
         """
         string = "SetHoldRegs({:d},{:d},{:d},{:d},{:s})".format(id,addr,count,table,type)
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -414,7 +424,7 @@ class dobot_api_dashboard:
         Synchronization instructions
         """
         string = "Sync()"
-        print(string)
+        logging.debug(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
         res=self.WaitReply()
         return res
@@ -468,7 +478,7 @@ class dobot_api_feedback:
         c: A number in the Cartesian coordinate system c
         """
         string = "MovJ({:f},{:f},{:f},{:f},{:f},{:f})".format(x,y,z,a,b,c)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
     
     def MovL(self, x, y, z, a, b, c):
@@ -482,7 +492,7 @@ class dobot_api_feedback:
         c: a number in the Cartesian coordinate system c
         """
         string = "MovL({:f},{:f},{:f},{:f},{:f},{:f})".format(x,y,z,a,b,c)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
     def JointMovJ(self, j1, j2, j3, j4, j5, j6):
@@ -491,7 +501,7 @@ class dobot_api_feedback:
         j1~j6:Point position values on each joint
         """
         string = "JointMovJ({:f},{:f},{:f},{:f},{:f},{:f})".format(j1,j2,j3,j4,j5,j6)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8')) 
     
     def Jump(self):
@@ -503,7 +513,7 @@ class dobot_api_feedback:
         j1~j6:Point position values on each joint
         """
         string = "RelMovJ({:f},{:f},{:f},{:f},{:f},{:f})".format(offset1,offset2,offset3,offset4,offset5,offset6)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
     
     def RelMovL(self, offsetX, offsetY, offsetZ):
@@ -514,7 +524,7 @@ class dobot_api_feedback:
         z: Offset in the Cartesian coordinate system Z
         """
         string = "RelMovL({:f},{:f},{:f})".format(offsetX,offsetY,offsetZ)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
     def MovLIO(self, x, y, z, a, b, c, *dynParams):
@@ -540,7 +550,7 @@ class dobot_api_feedback:
             print(type(params), params)
             string = string + ",{{{:d},{:d},{:d},{:d}}}".format(params[0],params[1],params[2],params[3])
         string = string + ")"
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8')) 
 
     def MovJIO(self, x, y, z, a, b, c, *dynParams):
@@ -561,13 +571,13 @@ class dobot_api_feedback:
         """
         # example： MovJIO(0,50,0,0,0,0,(0,50,1,0),(1,1,2,1))
         string = "MovJIO({:f},{:f},{:f},{:f},{:f},{:f}".format(x,y,z,a,b,c)
-        print(string)
+        logging.debug(string)
         print(type(dynParams), dynParams)
         for params in dynParams:
             print(type(params), params)
             string = string + ",{{{:d},{:d},{:d},{:d}}}".format(params[0],params[1],params[2],params[3])
         string = string + ")"
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))  
  
     def Arc(self, x1, y1, z1, a1, b1, c1, x2, y2, z2, a2, b2, c2):
@@ -578,7 +588,7 @@ class dobot_api_feedback:
         Note: This instruction should be used together with other movement instructions
         """
         string = "Arc({:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f})".format(x1,y1,z1,a1,b1,c1,x2,y2,z2,a2,b2,c2)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
     def Circle(self, count, x1, y1, z1, a1, b1, c1, x2, y2, z2, a2, b2, c2):
@@ -590,7 +600,7 @@ class dobot_api_feedback:
         Note: This instruction should be used together with other movement instructions
         """
         string = "Circle({:d},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f},{:f})".format(count,x1,y1,z1,a1,b1,c1,x2,y2,z2,a2,b2,c2)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
     
     def ServoJ(self, j1, j2, j3, j4, j5, j6):
@@ -599,7 +609,7 @@ class dobot_api_feedback:
         j1~j6:Point position values on each joint
         """
         string = "ServoJ({:f},{:f},{:f},{:f},{:f},{:f})".format(j1,j2,j3,j4,j5,j6)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
     def ServoP(self, x, y, z, a, b, c):
@@ -608,7 +618,7 @@ class dobot_api_feedback:
         x, y, z, a, b, c :Cartesian coordinate point value
         """
         string = "ServoP({:f},{:f},{:f},{:f},{:f},{:f})".format(x,y,z,a,b,c)
-        print(string)
+        logging.debug(string)
         self.socket_feedback.send(str.encode(string,'utf-8'))
 
     def WaitReply(self):
