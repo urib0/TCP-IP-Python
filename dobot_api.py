@@ -64,8 +64,9 @@ class dobot_api_dashboard:
         string = "EnableRobot()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
-        
+        res=self.WaitReply()
+        return res
+
     def DisableRobot(self):
         """
         Disabled the robot
@@ -73,7 +74,8 @@ class dobot_api_dashboard:
         string = "DisableRobot()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def ClearError(self):
         """
@@ -82,7 +84,8 @@ class dobot_api_dashboard:
         string = "ClearError()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def ResetRobot(self):
         """
@@ -91,7 +94,8 @@ class dobot_api_dashboard:
         string = "ResetRobot()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def SpeedFactor(self, speed):
         """
@@ -101,7 +105,8 @@ class dobot_api_dashboard:
         string = "SpeedFactor({:d})".format(speed)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8')) 
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def User(self, index):
         """
@@ -111,7 +116,8 @@ class dobot_api_dashboard:
         string = "User({:d})".format(index)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def Tool(self, index):
         """
@@ -121,7 +127,8 @@ class dobot_api_dashboard:
         string = "Tool({:d})".format(index)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def RobotMode(self):
         """
@@ -142,7 +149,8 @@ class dobot_api_dashboard:
         string = "PayLoad({:f},{:f})".format(weight,inertia)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def DO(self, index, status):
         """
@@ -153,7 +161,8 @@ class dobot_api_dashboard:
         string = "DO({:d},{:d})".format(index,status)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def DOExecute(self, index, status):
         """
@@ -164,7 +173,8 @@ class dobot_api_dashboard:
         string = "DOExecute({:d},{:d})".format(index,status)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def ToolDO(self, index, status):
         """
@@ -175,7 +185,8 @@ class dobot_api_dashboard:
         string = "ToolDO({:d},{:d})".format(index,status)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def ToolDOExecute(self, index, status):
         """
@@ -186,7 +197,8 @@ class dobot_api_dashboard:
         string = "ToolDOExecute({:d},{:d})".format(index,status)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def AO(self, index, val):
         """
@@ -197,7 +209,8 @@ class dobot_api_dashboard:
         string = "AO({:d},{:f})".format(index,val)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def AOExecute(self, index, val):
         """
@@ -208,7 +221,8 @@ class dobot_api_dashboard:
         string = "AOExecute({:d},{:f})".format(index,val)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def AccJ(self, speed):
         """
@@ -218,7 +232,8 @@ class dobot_api_dashboard:
         string = "AccJ({:d})".format(speed)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def AccL(self, speed):
         """
@@ -228,7 +243,8 @@ class dobot_api_dashboard:
         string = "AccL({:d})".format(speed)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def SpeedJ(self, speed):
         """
@@ -238,7 +254,8 @@ class dobot_api_dashboard:
         string = "SpeedJ({:d})".format(speed)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def SpeedL(self, speed):
         """
@@ -248,7 +265,8 @@ class dobot_api_dashboard:
         string = "SpeedL({:d})".format(speed)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def Arch(self, index):
         """
@@ -258,7 +276,8 @@ class dobot_api_dashboard:
         string = "Arch({:d})".format(index)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def CP(self, ratio):
         """
@@ -268,7 +287,8 @@ class dobot_api_dashboard:
         string = "CP({:d})".format(ratio)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def LimZ(self, value):
         """
@@ -278,7 +298,8 @@ class dobot_api_dashboard:
         string = "LimZ({:d})".format(value)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def SetArmOrientation(self, r, d, n, cfg):
         """
@@ -293,7 +314,8 @@ class dobot_api_dashboard:
         string = "SetArmOrientation({:d},{:d},{:d},{:d})".format(r,d,n,cfg)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def PowerOn(self):
         """
@@ -303,7 +325,8 @@ class dobot_api_dashboard:
         string = "PowerOn()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def RunScript(self, project_name):
         """
@@ -313,7 +336,8 @@ class dobot_api_dashboard:
         string = "RunScript({:s})".format(project_name)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def StopScript(self):
         """
@@ -322,7 +346,8 @@ class dobot_api_dashboard:
         string = "StopScript()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def PauseScript(self):
         """
@@ -331,7 +356,8 @@ class dobot_api_dashboard:
         string = "PauseScript()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def ContinueScript(self):
         """
@@ -340,7 +366,8 @@ class dobot_api_dashboard:
         string = "ContinueScript()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def GetHoldRegs(self, id, addr, count, type):
         """
@@ -359,7 +386,8 @@ class dobot_api_dashboard:
         string = "GetHoldRegs({:d},{:d},{:d},{:s})".format(id,addr,count,type)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def SetHoldRegs(self, id, addr, count, table, type):
         """
@@ -378,8 +406,9 @@ class dobot_api_dashboard:
         string = "SetHoldRegs({:d},{:d},{:d},{:d},{:s})".format(id,addr,count,table,type)
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
-    
+        res=self.WaitReply()
+        return res
+
     def Sync(self):
         """
         Synchronization instructions
@@ -387,14 +416,15 @@ class dobot_api_dashboard:
         string = "Sync()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res=self.WaitReply()
+        return res
 
     def WaitReply(self):
         """
         Read the return value
         """
         data = bytes.decode(self.socket_dashboard.recv(1024),'utf-8')
-        print('receive:', data)
+#        print('receive:', data)
         return data
 
     def close(self):
