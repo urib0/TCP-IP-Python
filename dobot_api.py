@@ -379,8 +379,9 @@ class dobot_api_dashboard:
         """
         Read the return value
         """
-        data = self.socket_dashboard.recv(1024)
-        print('receive:', bytes.decode(data,'utf-8'))
+        data = bytes.decode(self.socket_dashboard.recv(1024),'utf-8')
+        print('receive:', data)
+        return data
 
     def close(self):
         """
