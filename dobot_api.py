@@ -23,6 +23,19 @@ MyType=np.dtype([('len', np.int64, ), ('digital_input_bits', np.int64, ),
                 ('v_actual', np.float64, (6,)), ('dummy', np.float64, (9,6))
                 ])
 
+ModeType={
+    1:"ROBOT_MODE_INIT",
+    2:"ROBOT_MODE_BRAKE_OPEN",
+    4:"ROBOT_MODE_DISABLED",
+    5:"ROBOT_MODE_ENABLE",
+    6:"ROBOT_MODE_BACKDRIVE",
+    7:"ROBOT_MODE_RUNNING",
+    8:"ROBOT_MODE_RECORDING",
+    9:"ROBOT_MODE_ERROR	",
+    10:"ROBOT_MODE_PAUSE",
+    11:"ROBOT_MODE_JOG"
+}
+
 class dobot_api_dashboard:
     """
     Define class dobot_api_dashboard to establish a connection to Dobot
@@ -117,7 +130,8 @@ class dobot_api_dashboard:
         string = "RobotMode()"
         print(string)
         self.socket_dashboard.send(str.encode(string,'utf-8'))
-        self.WaitReply()
+        res = self.WaitReply()
+        return ModeType[int(res)]
 
     def PayLoad(self, weight, inertia):
         """
